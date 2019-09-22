@@ -1,0 +1,8 @@
+{
+  "name": "physim2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/vigovlugt/physim2.git",
+  "author": "Vigo Vlugt <vigovlugt@gmail.com>",
+  "license": "MIT"
+}
