@@ -17,5 +17,16 @@ export default class Simulation {
     this.bodies.push(body);
   }
 
-  update() {}
+  simulate(time: number) {
+    this.forces.forEach(force => {
+      force.simulate(time);
+    });
+    this.bodies.forEach(body => {
+      body.applyVelocity(time);
+    });
+  }
+
+  toString() {
+    return `${this.bodies.map(b => b.toString()).join("\n\n")}`;
+  }
 }

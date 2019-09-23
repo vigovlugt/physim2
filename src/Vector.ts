@@ -19,20 +19,46 @@ export default class Vector {
     return distance;
   }
 
-  add(vectorB: Vector) {
+  add(addition: Vector | number) {
     const newVector = this.copy();
-    newVector.x += vectorB.x;
-    newVector.y += vectorB.y;
-    newVector.z += vectorB.z;
+
+    if (typeof addition === "number") {
+      newVector.x += addition;
+      newVector.y += addition;
+      newVector.z += addition;
+    } else {
+      newVector.x += addition.x;
+      newVector.y += addition.y;
+      newVector.z += addition.z;
+    }
+
     return newVector;
   }
 
-  multiply(vectorB: Vector) {
+  multiply(multiplier: Vector | number) {
     const newVector = this.copy();
-    newVector.x *= vectorB.x;
-    newVector.y *= vectorB.y;
-    newVector.z *= vectorB.z;
+
+    if (typeof multiplier === "number") {
+      newVector.x *= multiplier;
+      newVector.y *= multiplier;
+      newVector.z *= multiplier;
+    } else {
+      newVector.x *= multiplier.x;
+      newVector.y *= multiplier.y;
+      newVector.z *= multiplier.z;
+    }
+
     return newVector;
+  }
+
+  divide(divider: Vector | number) {
+    if (typeof divider === "number") {
+      return this.multiply(1 / divider);
+    } else {
+      return this.multiply(
+        new Vector(1 / divider.x, 1 / divider.y, 1 / divider.z)
+      );
+    }
   }
 
   translate(translation: Vector) {
@@ -50,6 +76,10 @@ export default class Vector {
 
   copy() {
     return new Vector(this.x, this.y, this.z);
+  }
+
+  toString() {
+    return `x: ${this.x} y: ${this.y} z:${this.z}`;
   }
 
   static zero = new Vector(0, 0, 0);

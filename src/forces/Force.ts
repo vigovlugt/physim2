@@ -1,3 +1,3 @@
 export default interface Force {
-  simulate(): void;
+  simulate(time: number): void;
 }
